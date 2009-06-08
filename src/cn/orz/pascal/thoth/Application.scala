@@ -55,36 +55,5 @@ object Application extends AbstractRoute{
 		      
     res.redirect( "/index.html" )
   }
-  
-   get("/item.html"){ (req:Request, res:Response) =>  
-	<html lang="ja">
-	    <head>
-	    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	    	<title>Feed Reader</title>
-	    </head>
-	    <body>
-		    <h1>Thoth - FeedReader</h1>
-		    <p>
-		    <form method="POST">
-			    title : <input type="text" name="title" /><br />
-			    link : <input type="text" name="link" /><br />
-			    id : <input type="text" name="id" /><br />
-			    category : <input type="text" name="category" /><br />
-			    summary : <textarea name="summary"></textarea>
-			    <input type="submit"/>
-		    </form>
-		    </p>
-		    <p>
-		    	{for( entry <- DataStore from('entry) asIterator) yield  {
-		    		<p>
-		    		<h3>{entry('title)}</h3>
-		    		<div>{entry('published)}</div>
-		    		<p>{entry('summary)}</p>
-		    		</p>
-		    	}}
-		    </p>
-	    </body>
-    </html>
-  }  
 
 }
